@@ -117,6 +117,28 @@
             gap: 10px;
         }
 
+        .icon {
+            width: 1.1em;
+            height: 1.1em;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+            vertical-align: -0.15em;
+        }
+
+        .with-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-emphasis {
+            color: var(--primary-color);
+        }
+
         /* 數據卡片 (Grid) */
         .data-grid {
             display: grid;
@@ -228,22 +250,22 @@
 <body>
 
     <header>
-        <h1>🌿 Real-World Experience of Finerenone</h1>
+        <h1><span class="with-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c0-6.5 3.5-11 9-13-1 6.5-4.5 11-9 13Z"></path><path d="M12 21C5.5 18.5 3 13 3 6c5 1.2 8 4.5 9 9"></path></svg>Real-World Experience of Finerenone</span></h1>
         <div class="subtitle">奇美醫療體系多中心回溯性世代研究 (N = 166)</div>
         <p style="color: #888; font-size: 0.9em; margin-top: 15px;">Data Source: Chi Mei Medical Center (Aug 2023 - Oct 2024)</p>
     </header>
 
     <div class="container">
         <div class="tab-menu">
-            <button class="tab-btn active" onclick="openTab('study-design')">📚 研究設計</button>
-            <button class="tab-btn" onclick="openTab('table1')">👥 基礎特徵 (Table 1)</button>
-            <button class="tab-btn" onclick="openTab('table2')">💧 腎臟結果 (Table 2)</button>
-            <button class="tab-btn" onclick="openTab('table3')">❤️ 臨床與安全性 (Table 3)</button>
-            <button class="tab-btn" onclick="openTab('subgroup')">🔍 次族群分析</button>
+            <button class="tab-btn active" onclick="openTab('study-design')"><span class="with-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 0-3 3V4Z"></path><path d="M7 20h13V7a3 3 0 0 0-3-3"></path><path d="M8.5 9.5h6"></path><path d="M8.5 13h6"></path></svg>研究設計</span></button>
+            <button class="tab-btn" onclick="openTab('table1')"><span class="with-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3.5 19.5a5.5 5.5 0 0 1 11 0"></path><path d="M13.5 19.5a4.5 4.5 0 0 1 7 0"></path></svg>基礎特徵 (Table 1)</span></button>
+            <button class="tab-btn" onclick="openTab('table2')"><span class="with-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6 6 10a6 6 0 1 1-12 0c0-4 6-10 6-10Z"></path><path d="M9.5 13.5a2.5 2.5 0 0 0 5 0"></path></svg>腎臟結果 (Table 2)</span></button>
+            <button class="tab-btn" onclick="openTab('table3')"><span class="with-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"></path></svg>臨床與安全性 (Table 3)</span></button>
+            <button class="tab-btn" onclick="openTab('subgroup')"><span class="with-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-3.5-3.5"></path><path d="M11 8v6"></path><path d="M8 11h6"></path></svg>次族群分析</span></button>
         </div>
 
         <div id="study-design" class="content-section active">
-            <h2>📋 研究設計與族群 (Study Design & Population)</h2>
+            <h2><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8"></path><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M8.5 9h7"></path><path d="M8.5 13h7"></path><path d="M8.5 17h4"></path></svg>研究設計與族群 (Study Design & Population)</h2>
             <p>本研究為南台灣首份針對 <strong>Finerenone (nsMRA)</strong> 的多中心真實世界數據 (RWD)。旨在評估其於慢性腎臟病 (CKD) 患者中之療效與安全性。</p>
             
             <div class="data-grid">
@@ -267,7 +289,7 @@
         </div>
 
         <div id="table1" class="content-section">
-            <h2>👥 基準特徵 (Baseline Characteristics)</h2>
+            <h2><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3.5 19.5a5.5 5.5 0 0 1 11 0"></path><path d="M13.5 19.5a4.5 4.5 0 0 1 7 0"></path></svg>基準特徵 (Baseline Characteristics)</h2>
             <p>收案患者的平均年齡為 66.5 歲，具有高度的共病比例與當代標準治療 (Guideline-directed medical therapy) 的覆蓋率。</p>
             <table>
                 <tr>
@@ -306,7 +328,7 @@
         </div>
 
         <div id="table2" class="content-section">
-            <h2>💧 腎臟結果 (Renal Outcomes)</h2>
+            <h2><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6 6 10a6 6 0 1 1-12 0c0-4 6-10 6-10Z"></path><path d="M9.5 13.5a2.5 2.5 0 0 0 5 0"></path></svg>腎臟結果 (Renal Outcomes)</h2>
             
             <h3>1. eGFR 軌跡 (穩定維持)</h3>
             <p>治療期間，患者的腎絲球過濾率 (eGFR) 於 Day 30, Day 90, Day 180 均未出現顯著下降 (均 P > 0.4)。證明在真實世界中，Finerenone 展現了高度的腎功能穩定性。</p>
@@ -332,11 +354,11 @@
         </div>
 
         <div id="table3" class="content-section">
-            <h2>❤️ 臨床事件與安全性 (Clinical & Safety Outcomes)</h2>
+            <h2><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"></path></svg>臨床事件與安全性 (Clinical & Safety Outcomes)</h2>
             
             <div style="display: flex; flex-wrap: wrap; gap: 20px;">
                 <div style="flex: 1; min-width: 300px;">
-                    <h3 style="color: var(--primary-color);">🎯 療效指標 (Efficacy)</h3>
+                    <h3 style="color: var(--primary-color);"><span class="with-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>療效指標 (Efficacy)</span></h3>
                     <table>
                         <tr>
                             <th>事件</th>
@@ -358,7 +380,7 @@
                 </div>
 
                 <div style="flex: 1; min-width: 300px;">
-                    <h3 style="color: var(--primary-color);">🛡️ 安全性指標 (Safety)</h3>
+                    <h3 style="color: var(--primary-color);"><span class="with-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 5 3.5 8 7 10 3.5-2 7-5 7-10V6l-7-3Z"></path><path d="m9.5 12 2 2 3-3"></path></svg>安全性指標 (Safety)</span></h3>
                     <table>
                         <tr>
                             <th>事件</th>
@@ -384,12 +406,12 @@
                 </div>
             </div>
             <p style="margin-top: 15px; background: #FDFBF7; padding: 10px; border-radius: 5px;">
-                💡 <strong>臨床觀點：</strong> 雖然整體高血鉀發生率約 19.3%，但高達 <strong>96.7%</strong> 的高血鉀事件屬於輕度，嚴重高血鉀 (1.8%) 發生率極低，且與國際 FIDELITY 試驗 (1.1%) 結果高度吻合，顯示安全性極高。
+                <span class="with-icon icon-emphasis"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"></path><path d="M9 12h6"></path><path d="M8 17h8"></path><path d="M9 21h6"></path><path d="M7 8a5 5 0 1 1 10 0"></path></svg></span><strong>臨床觀點：</strong> 雖然整體高血鉀發生率約 19.3%，但高達 <strong>96.7%</strong> 的高血鉀事件屬於輕度，嚴重高血鉀 (1.8%) 發生率極低，且與國際 FIDELITY 試驗 (1.1%) 結果高度吻合，顯示安全性極高。
             </p>
         </div>
 
         <div id="subgroup" class="content-section">
-            <h2>🔍 次族群與敏感度分析 (Subgroup Analysis)</h2>
+            <h2><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-3.5-3.5"></path><path d="M11 8v6"></path><path d="M8 11h6"></path></svg>次族群與敏感度分析 (Subgroup Analysis)</h2>
             <p>我們針對「高血鉀發生率」進行了潛在因子的交叉比對：</p>
 
             <div class="data-grid">
@@ -406,7 +428,7 @@
             </div>
 
             <p style="margin-top: 20px; line-height: 1.8;">
-                🌟 <strong>黃金搭檔效應 (SGLT2i Co-therapy)：</strong><br>
+                <span class="with-icon icon-emphasis"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4"></path><path d="M12 18v4"></path><path d="M4.9 4.9l2.8 2.8"></path><path d="M16.3 16.3l2.8 2.8"></path><path d="M2 12h4"></path><path d="M18 12h4"></path><path d="M4.9 19.1 7.7 16.3"></path><path d="m16.3 7.7 2.8-2.8"></path><circle cx="12" cy="12" r="3.5"></circle></svg></span><strong>黃金搭檔效應 (SGLT2i Co-therapy)：</strong><br>
                 數據清楚顯示，<strong>合併使用 SGLT2i 的患者，其高血鉀風險實質上低於未使用者 (17.4% vs 24.4%)</strong>。這證實了 SGLT2i 可能透過促進尿鈉與尿鉀排泄的機制，完美抵銷了 Finerenone 潛在的高血鉀副作用。<br><br>
                 此外，起始劑量 (10mg vs 20mg) 與早/晚期 CKD 分期，皆不影響藥物的整體安全防護效果。
             </p>
