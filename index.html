@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finerenone 台灣真實世界臨床分析</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+        :root {
+            --bg-color: #F9F6F0; /* 溫暖米白 */
+            --text-color: #4A4036; /* 深灰棕 */
+            --primary-color: #D4A373; /* 赤陶/駝色 */
+            --secondary-color: #8A9A5B; /* 鼠尾草綠 */
+            --accent-color: #E9C46A; /* 柔和琥珀 */
+            --card-bg: #FFFFFF;
+            --border-color: #E0D8C3;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Sans TC', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            background-image: radial-gradient(#E0D8C3 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 1.2em;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* 導覽列 (Tabs) */
+        .tab-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 2px solid var(--border-color);
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(212, 163, 115, 0.3);
+        }
+
+        /* 內容區塊 */
+        .content-section {
+            display: none;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(74, 64, 54, 0.08);
+            border: 1px solid var(--border-color);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 數據卡片 (Grid) */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .data-card {
+            background-color: var(--bg-color);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .data-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .data-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+
+        .data-label {
+            font-size: 0.9em;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        /* 表格設計 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--bg-color);
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #FDFBF7;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .good-news {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* UACR Chart */
+        .chart-bar-container {
+            margin: 20px 0;
+        }
+        .chart-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .chart-label {
+            width: 100px;
+            font-weight: 500;
+        }
+        .chart-bar-bg {
+            flex-grow: 1;
+            background-color: #EFEFEF;
+            border-radius: 20px;
+            height: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            color: white;
+            font-size: 0.85em;
+            transition: width 1.5s ease;
+        }
+        .chart-bar-fill.start { background-color: var(--primary-color); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🌿 Real-World Experience of Finerenone</h1>
+        <div class="subtitle">奇美醫療體系多中心回溯性世代研究 (N = 166)</div>
+        <p style="color: #888; font-size: 0.9em; margin-top: 15px;">Data Source: Chi Mei Medical Center (Aug 2023 - Oct 2024)</p>
+    </header>
+
+    <div class="container">
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="openTab('study-design')">📚 研究設計</button>
+            <button class="tab-btn" onclick="openTab('table1')">👥 基礎特徵 (Table 1)</button>
+            <button class="tab-btn" onclick="openTab('table2')">💧 腎臟結果 (Table 2)</button>
+            <button class="tab-btn" onclick="openTab('table3')">❤️ 臨床與安全性 (Table 3)</button>
+            <button class="tab-btn" onclick="openTab('subgroup')">🔍 次族群分析</button>
+        </div>
+
+        <div id="study-design" class="content-section active">
+            <h2>📋 研究設計與族群 (Study Design & Population)</h2>
+            <p>本研究為南台灣首份針對 <strong>Finerenone (nsMRA)</strong> 的多中心真實世界數據 (RWD)。旨在評估其於慢性腎臟病 (CKD) 患者中之療效與安全性。</p>
+            
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="data-value">166</div>
+                    <div class="data-label">總收案人數 (N)</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-value">276 天</div>
+                    <div class="data-label">平均追蹤時間</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-value">15.7%</div>
+                    <div class="data-label">非糖尿病 CKD 比例</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; border-left: 4px solid var(--primary-color); padding-left: 15px;">
+                <strong>核心看點：</strong>本族群相較於大型 RCT (如 FIDELIO-DKD) 涵蓋了更廣泛的真實世界患者，包含早期與晚期 CKD，以及高比例同時使用 SGLT2i (72.9%) 的患者。
+            </p>
+        </div>
+
+        <div id="table1" class="content-section">
+            <h2>👥 基準特徵 (Baseline Characteristics)</h2>
+            <p>收案患者的平均年齡為 66.5 歲，具有高度的共病比例與當代標準治療 (Guideline-directed medical therapy) 的覆蓋率。</p>
+            <table>
+                <tr>
+                    <th>變數 (Variables)</th>
+                    <th>整體數值 (Total N=166)</th>
+                </tr>
+                <tr>
+                    <td>平均年齡 (Age)</td>
+                    <td>66.5 ± 11.3 歲</td>
+                </tr>
+                <tr>
+                    <td>男性比例 (Male)</td>
+                    <td>77.1%</td>
+                </tr>
+                <tr>
+                    <td>糖尿病 (Diabetes Mellitus)</td>
+                    <td>84.3%</td>
+                </tr>
+                <tr>
+                    <td>平均 eGFR</td>
+                    <td>43.5 ± 24.9 mL/min/1.73m²</td>
+                </tr>
+                <tr>
+                    <td>中位數 UACR</td>
+                    <td>610.5 mg/g</td>
+                </tr>
+                <tr>
+                    <td>共用藥物：RAS Blockers</td>
+                    <td>86.1%</td>
+                </tr>
+                <tr>
+                    <td>共用藥物：<span class="highlight">SGLT2 inhibitors</span></td>
+                    <td><span class="highlight">72.9%</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="table2" class="content-section">
+            <h2>💧 腎臟結果 (Renal Outcomes)</h2>
+            
+            <h3>1. eGFR 軌跡 (穩定維持)</h3>
+            <p>治療期間，患者的腎絲球過濾率 (eGFR) 於 Day 30, Day 90, Day 180 均未出現顯著下降 (均 P > 0.4)。證明在真實世界中，Finerenone 展現了高度的腎功能穩定性。</p>
+
+            <h3 style="margin-top: 30px;">2. 蛋白尿顯著改善 (UACR Reduction)</h3>
+            <p>與基準值相比，在治療第 180 天時，尿液白蛋白 (UACR) 達到了 <span class="good-news">極具統計學意義的下降 (P=0.001)</span>。</p>
+            
+            <div class="chart-bar-container">
+                <div class="chart-row">
+                    <div class="chart-label">Baseline</div>
+                    <div class="chart-bar-bg">
+                        <div class="chart-bar-fill start" style="width: 100%;">610.5 mg/g (基準值)</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Day 180</div>
+                    <div class="chart-bar-bg">
+                        <div class="chart-bar-fill" style="width: 54%;">332.1 mg/g (下降 ~46%)</div>
+                    </div>
+                </div>
+            </div>
+            <p style="font-size: 0.9em; color: #666;">*備註：此 ~46% 的降幅甚至超越了全球樞紐試驗 FIDELIO-DKD (~31%) 的結果。</p>
+        </div>
+
+        <div id="table3" class="content-section">
+            <h2>❤️ 臨床事件與安全性 (Clinical & Safety Outcomes)</h2>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="color: var(--primary-color);">🎯 療效指標 (Efficacy)</h3>
+                    <table>
+                        <tr>
+                            <th>事件</th>
+                            <th>發生率 (%)</th>
+                        </tr>
+                        <tr>
+                            <td>全死因死亡 (All-cause mortality)</td>
+                            <td>1.2% (2人)</td>
+                        </tr>
+                        <tr>
+                            <td>非致命性心梗 (Nonfatal MI)</td>
+                            <td>1.2% (2人)</td>
+                        </tr>
+                        <tr>
+                            <td>血清肌酸酐翻倍 (Cr Doubling)</td>
+                            <td><span class="good-news">1.2% (僅2人)</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="color: var(--primary-color);">🛡️ 安全性指標 (Safety)</h3>
+                    <table>
+                        <tr>
+                            <th>事件</th>
+                            <th>發生率 (%)</th>
+                        </tr>
+                        <tr>
+                            <td>急性腎損傷 (AKI)</td>
+                            <td>1.2%</td>
+                        </tr>
+                        <tr>
+                            <td>整體高血鉀 (K > 5 mEq/L)</td>
+                            <td>19.3%</td>
+                        </tr>
+                        <tr>
+                            <td>- 輕度 (Mild, K 5-6 mEq/L)</td>
+                            <td>18.7%</td>
+                        </tr>
+                        <tr>
+                            <td>- <span class="highlight">重度 (Severe, K > 6 mEq/L)</span></td>
+                            <td><span class="highlight">1.8%</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <p style="margin-top: 15px; background: #FDFBF7; padding: 10px; border-radius: 5px;">
+                💡 <strong>臨床觀點：</strong> 雖然整體高血鉀發生率約 19.3%，但高達 <strong>96.7%</strong> 的高血鉀事件屬於輕度，嚴重高血鉀 (1.8%) 發生率極低，且與國際 FIDELITY 試驗 (1.1%) 結果高度吻合，顯示安全性極高。
+            </p>
+        </div>
+
+        <div id="subgroup" class="content-section">
+            <h2>🔍 次族群與敏感度分析 (Subgroup Analysis)</h2>
+            <p>我們針對「高血鉀發生率」進行了潛在因子的交叉比對：</p>
+
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="data-label">合併使用 SGLT2i</div>
+                    <div class="data-value" style="color: var(--secondary-color);">17.4%</div>
+                    <div class="data-label">高血鉀發生率</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">無使用 SGLT2i</div>
+                    <div class="data-value" style="color: #c0392b;">24.4%</div>
+                    <div class="data-label">高血鉀發生率</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 20px; line-height: 1.8;">
+                🌟 <strong>黃金搭檔效應 (SGLT2i Co-therapy)：</strong><br>
+                數據清楚顯示，<strong>合併使用 SGLT2i 的患者，其高血鉀風險實質上低於未使用者 (17.4% vs 24.4%)</strong>。這證實了 SGLT2i 可能透過促進尿鈉與尿鉀排泄的機制，完美抵銷了 Finerenone 潛在的高血鉀副作用。<br><br>
+                此外，起始劑量 (10mg vs 20mg) 與早/晚期 CKD 分期，皆不影響藥物的整體安全防護效果。
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabId) {
+            // 隱藏所有內容
+            let sections = document.getElementsByClassName("content-section");
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].classList.remove("active");
+            }
+            
+            // 移除所有按鈕的 active 狀態
+            let tabs = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            
+            // 顯示當前選中的內容與按鈕狀態
+            document.getElementById(tabId).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
