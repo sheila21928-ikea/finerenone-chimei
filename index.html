@@ -257,6 +257,67 @@
       padding: 18px;
     }
 
+    .compare-table-wrap { overflow-x: auto; }
+    .compare-table {
+      min-width: 760px;
+      border: 1px solid #2d436f;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(10, 20, 40, .75);
+    }
+    .compare-table th,
+    .compare-table td {
+      border-bottom: 1px solid #263d68;
+      border-right: 1px solid #263d68;
+      padding: 14px 12px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .compare-table th:first-child,
+    .compare-table td:first-child { text-align: left; }
+    .compare-table tr th:last-child,
+    .compare-table tr td:last-child { border-right: none; }
+
+    .highlight { color: var(--gold); font-weight: 700; }
+    .findings {
+      margin-top: 18px;
+      border-left: 4px solid var(--gold);
+      background: rgba(227, 199, 132, .08);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+    }
+    .findings h3 {
+      margin: 0 0 10px;
+      color: #f1d59e;
+      font-size: 1.05rem;
+      letter-spacing: .04em;
+    }
+    .findings ul { margin: 0; padding-left: 20px; }
+    .findings li { color: #dbe8ff; margin: 8px 0; }
+
+    .duo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .pillar {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #2b436f;
+      background: linear-gradient(160deg, #0d1a34, #0a142a);
+    }
+    .pillar-head {
+      padding: 14px 18px;
+      font-family: "Noto Serif TC", serif;
+      font-size: 1.35rem;
+      color: #fff;
+      letter-spacing: .04em;
+    }
+    .pillar-head.strength { background: #4e7d63; }
+    .pillar-head.limit { background: #8d4f56; }
+    .pillar ul { margin: 0; padding: 18px 22px 18px 38px; }
+    .pillar li { margin: 10px 0; color: #d9e7ff; }
+
     footer { text-align: center; padding: 56px 0 70px; color: #93aacb; }
 
     @media (max-width: 880px) {
@@ -273,6 +334,8 @@
     <button class="side-dot" data-target="chapter2" aria-label="Key Results"></button>
     <button class="side-dot" data-target="chapter3" aria-label="Safety"></button>
     <button class="side-dot" data-target="chapter4" aria-label="Subgroups"></button>
+    <button class="side-dot" data-target="chapter5" aria-label="Trial Comparison"></button>
+    <button class="side-dot" data-target="chapter6" aria-label="Strengths and Limitations"></button>
   </nav>
 
   <header id="hero" class="container">
@@ -382,6 +445,111 @@
 
       <div class="verdict">
         Conclusion: In real-world practice, Finerenone shows <strong>stable eGFR, significant UACR reduction, and predominantly mild hyperkalemia</strong>, with consistent direction across most subgroups.
+      </div>
+    </section>
+
+    <section id="chapter5">
+      <div class="chapter-title">
+        <small>Chapter V</small>
+        <h2>Comparison with Pivotal Trials</h2>
+      </div>
+
+      <div class="panel compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>This Study</th>
+              <th>FIDELIO-DKD</th>
+              <th>FIGARO-DKD</th>
+              <th>FIDELITY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>N</td>
+              <td class="highlight">166</td>
+              <td>5,674</td>
+              <td>7,437</td>
+              <td>13,026</td>
+            </tr>
+            <tr>
+              <td>Mean eGFR</td>
+              <td class="highlight">43.5</td>
+              <td>44.3</td>
+              <td>67.8</td>
+              <td>57.6</td>
+            </tr>
+            <tr>
+              <td>DM prevalence</td>
+              <td class="highlight">84.3%</td>
+              <td>100%</td>
+              <td>100%</td>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <td>UACR reduction</td>
+              <td class="highlight">~46% (6 mo)</td>
+              <td>~31% (4 mo)</td>
+              <td>~32% (4 mo)</td>
+              <td>~32%</td>
+            </tr>
+            <tr>
+              <td>Hyperkalemia</td>
+              <td class="highlight">19.3%</td>
+              <td>15.8%</td>
+              <td>10.8%</td>
+              <td>14.0%</td>
+            </tr>
+            <tr>
+              <td>Severe HK (K&gt;6)</td>
+              <td class="highlight">1.8%</td>
+              <td>1.6%</td>
+              <td>0.6%</td>
+              <td>1.1%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="findings">
+          <h3>Key Findings</h3>
+          <ul>
+            <li>UACR reduction is comparable to or exceeds pivotal trials (~46% vs ~31–32%).</li>
+            <li>Hyperkalemia is predominantly mild (96.7%); severe rate is close to FIDELITY (1.8% vs 1.1%).</li>
+            <li>Broader clinical spectrum: includes 15.7% non-diabetic CKD patients.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="chapter6">
+      <div class="chapter-title">
+        <small>Chapter VI</small>
+        <h2>Strengths &amp; Limitations</h2>
+      </div>
+
+      <div class="duo-grid">
+        <article class="pillar">
+          <div class="pillar-head strength">Strengths</div>
+          <ul>
+            <li>First multicenter real-world finerenone dataset from Taiwan.</li>
+            <li>Includes both early and advanced CKD stages.</li>
+            <li>Broader population than classic RCTs (non-diabetic CKD included).</li>
+            <li>Reflects multidisciplinary prescribing patterns in routine care.</li>
+            <li>Comprehensive safety monitoring with potassium stratification.</li>
+          </ul>
+        </article>
+
+        <article class="pillar">
+          <div class="pillar-head limit">Limitations</div>
+          <ul>
+            <li>Retrospective design with inherent selection/confounding bias.</li>
+            <li>Relatively small sample size (N=166).</li>
+            <li>Short follow-up duration (mean ~9 months).</li>
+            <li>Incomplete UACR data at later timepoints.</li>
+            <li>Single medical center system and no comparator group.</li>
+          </ul>
+        </article>
       </div>
     </section>
   </main>
